@@ -1,7 +1,7 @@
 package caso1;
 
 public class Carro {
-    private String modelo=null, direcao=null;
+    private String modelo=null, direcao="reto";
     private int velocidade=0, aceleracao=0, marcha=0;
     private boolean ligado=false;
 
@@ -9,57 +9,75 @@ public class Carro {
         this.modelo = modelo;
     }
     public String getModelo() {
-        return modelo;
+        return this.modelo;
     }
 
     public void setAceleracao(int aceleracao) {
         this.aceleracao = aceleracao;
     }
     public int getAceleracao() {
-        return aceleracao;
+        return this.aceleracao;
     }
 
     public Boolean ligar(){
         ligado=true;
-        return ligado;
+        return this.ligado;
     }
     public Boolean desligar(){
-        ligado=false;
-        return ligado;
+        if(this.velocidade==0){
+            ligado=false;
+        }
+
+        return this.ligado;
     }
 
     public void acelerar(){
-        ++velocidade;
+        ++this.velocidade;
     }
     public void frear(){
-        --velocidade;
+        --this.velocidade;
     }
 
     public String virarDireita(){
-        if(direcao=="esquerda"){
-            direcao="reto";
+        if(this.direcao=="esquerda"){
+            this.direcao="reto";
         } else {
-            direcao="direita";
+            this.direcao="direita";
         }
-        return direcao;
+        return this.direcao;
     }
     public String virarEsquerda(){
-        if(direcao=="direita"){
-            direcao="reto";
+        if(this.direcao=="direita"){
+            this.direcao="reto";
         } else{
-            direcao="esquerda";
+            this.direcao="esquerda";
         }
-        return direcao;
+        return this.direcao;
     }
 
     public void aumentarMarcha() {
-        if (marcha<6) {
-            ++marcha;
+        if (this.marcha<6) {
+            ++this.marcha;
         }
     }
     public void diminuirMarcha(){
-        if(marcha>0) {
-            --marcha;
+        if(this.marcha>0) {
+            --this.marcha;
         }
     }
+
+    public void listarDados(){
+        String status;
+        if(this.ligado){
+            status="Ligado";
+        }else{
+            status="Desligado";
+        }
+        System.out.println(String.format("Status: %s \nVelocidade: %d \nMarcha: %d \nDireição: %s \n",status,this.velocidade,this.marcha,this.direcao));
+    }
 }
+
+
+
+
+
